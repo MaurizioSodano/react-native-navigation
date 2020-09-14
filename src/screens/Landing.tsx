@@ -1,8 +1,7 @@
 import React  from 'react';
 import { View, Text, StyleSheet,Button } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-
 //Adding types to Props
+import { StackNavigationProp } from '@react-navigation/stack';
 import  {RootStackParamList} from "../App";
 
 type LandingScreenNavigationProp = StackNavigationProp<
