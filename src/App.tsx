@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator  } from '@react-navigation/stack';
  
@@ -16,12 +16,28 @@ export type RootStackParamList = {
 const RootStack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const handleSignIn = () => {
+    // TODO implement real sign in mechanism
+ 
+    setIsAuthenticated(true);
+  };
   return (
     <NavigationContainer>
       <RootStack.Navigator>
+      {isAuthenticated ? (
+          <RootStack.Screen name="Home" component={HomeScreen} />
+        ) : (
+          <>
         <RootStack.Screen name="Landing" component={LandingScreen} />
-        <RootStack.Screen name="Sign In" component={SignInScreen} />
+        <RootStack.Screen name="Sign In">
+          {(props) => (
+            <SignInScreen {...props} onSignIn={handleSignIn} />
+          )}
+        </RootStack.Screen>
         <RootStack.Screen name="Home" component={HomeScreen} />
+        </>
+        )}
       </RootStack.Navigator>
     </NavigationContainer>
   );
