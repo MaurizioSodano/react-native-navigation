@@ -2,15 +2,16 @@ import React  from 'react';
 import { View, Text, StyleSheet,Button } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
+//Adding types to Props
 import  {RootStackParamList} from "../App";
 
-type HomeScreenNavigationProp = StackNavigationProp<
+type LandingScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Home'
+  "Landing"
 >;
 
 type Props = {
-  navigation: HomeScreenNavigationProp;
+  navigation: LandingScreenNavigationProp;
 };
 
 
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
 });
  
 export default function LandingScreen({ navigation }:Props)  {
-  console.log(navigation);
+
   return (
     <View style={styles.container}>
       <Text>Public Landing Screen</Text>
