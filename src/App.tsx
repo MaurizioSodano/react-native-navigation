@@ -5,7 +5,7 @@ import { NavigationContainer,  DrawerActions,
   getFocusedRouteNameFromRoute, } from '@react-navigation/native';
 import { createStackNavigator  } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LandingScreen from './screens/Landing';
 import HomeScreen from './screens/Home';
 import SignInScreen from './screens/SignIn';
@@ -14,7 +14,7 @@ import PasswordForgetScreen from './screens/PasswordForget';
 import PasswordChangeScreen from './screens/PasswordChange';
 import AccountScreen from './screens/Account';
 import AdminScreen from './screens/Admin';
-
+import ProfileScreen from './screens/Profile';
 export type RootStackParamList = {
   Home: undefined;
   Landing:undefined;
@@ -23,13 +23,23 @@ export type RootStackParamList = {
   "Password Forget":undefined
 };
 
-
+const Tab = createBottomTabNavigator();
+ 
+const HomeTabs = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+};
 const Drawer = createDrawerNavigator();
  
 const HomeDrawer = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Home" component={HomeTabs} />
+      
       <Drawer.Screen name="Account" component={AccountScreen} />
       <Drawer.Screen
         name="Password Forget"
@@ -63,7 +73,7 @@ export default function App() {
  
     setIsAuthenticated(true);
   };
-  console.log(isAuthenticated);
+
 
   return (
     <NavigationContainer>
