@@ -8,12 +8,13 @@ import LandingScreen from './screens/Landing';
 import HomeScreen from './screens/Home';
 import SignInScreen from './screens/SignIn';
 import SignUpScreen from './screens/SignUp';
-
+import PasswordForgetScreen from './screens/PasswordForget';
 export type RootStackParamList = {
   Home: undefined;
   Landing:undefined;
   'Sign In': undefined;
   'Sign Up': undefined;
+  "Password Forget":undefined
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
@@ -68,7 +69,11 @@ export default function App() {
               {(props) => (
                 <SignUpScreen {...props} onSignUp={handleSignUp} />
               )}
-            </RootStack.Screen>        
+          </RootStack.Screen>
+          <RootStack.Screen
+              name="Password Forget"
+              component={PasswordForgetScreen}
+            />
         </>
         )}
       </RootStack.Navigator>
