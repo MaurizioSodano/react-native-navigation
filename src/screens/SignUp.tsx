@@ -5,14 +5,13 @@ import { View, Text, StyleSheet,Button, NativeSyntheticEvent,NativeTouchEvent } 
 import { StackNavigationProp } from '@react-navigation/stack';
 import  {RootStackParamList} from "../App";
 
-type SignInScreenNavigationProp = StackNavigationProp<
+type SignUpScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "Sign In"
+  "Sign Up"
 >;
 
 type Props = {
-  onSignIn:  (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
-  navigation: SignInScreenNavigationProp;
+  onSignUp:  (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
 };
 
 const styles = StyleSheet.create({
@@ -23,18 +22,11 @@ const styles = StyleSheet.create({
   },
 });
  
-export default function SignInScreen ({onSignIn,navigation}:Props)  {
+export default function SignUpScreen ({onSignUp}:Props)  {
   return (
     <View style={styles.container}>
-       <Text>Public Sign In Screen</Text>
-       <Button title="Sign In" onPress={onSignIn} />
-       <Text>OR</Text>
- 
-      <Button
-        title="Go to Sign Up"
-        onPress={() => navigation.navigate('Sign Up')}
-      />
-
+       <Text>Public Sign Up Screen</Text>
+       <Button title="Sign Up" onPress={onSignUp} />
     </View>
   );
 };
